@@ -1,4 +1,6 @@
-# getx_blockchain_practice_project_1
+# BLOCKCHAINAPP
+
+### Mohammad Usman Asegaf
 
 ### Project untuk latihan
 
