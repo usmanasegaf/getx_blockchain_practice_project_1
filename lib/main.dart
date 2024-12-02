@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/home": (context) => HomePage(),
       },
+      initialRoute: "/home",
     );
   }
 }
