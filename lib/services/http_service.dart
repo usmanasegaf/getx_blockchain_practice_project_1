@@ -20,6 +20,7 @@ class HttpService {
   Future<dynamic> get(String path) async {
     try {
       Response response = await _dio.get(path);
+      return response.data;
     } catch (e) {
       print(e);
     }
