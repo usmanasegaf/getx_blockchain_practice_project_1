@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AddAssetsDialogController extends GetxController {
-  RxBool loading = false.obs;
+  RxBool loading = true.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    Future.delayed(Durations.extralong4).then((value) {
+      loading.value = false;
+    });
+  }
 }
 
 class AddAssetsDialog extends StatelessWidget {
