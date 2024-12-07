@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_blockchain_practice_project_1/services/http_service.dart';
 
 class AddAssetsDialogController extends GetxController {
-  RxBool loading = true.obs;
+  RxBool loading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    Future.delayed(Durations.extralong4).then((value) {
-      loading.value = false;
-    });
+    // Future.delayed(Durations.extralong4).then((value) {
+    //   loading.value = false;
+    // });
+    _getAssets();
+  }
+
+  Future<void> _getAssets() async {
+    loading.value = true;
+    HttpService httpService = Get.find<HttpService>();
+    var responseData = await httpService.get("currencies");
+    print(responseData);
+    loading.value = false;
   }
 }
 
