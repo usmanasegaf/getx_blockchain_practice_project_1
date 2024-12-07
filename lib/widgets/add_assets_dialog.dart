@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_blockchain_practice_project_1/models/api_response.dart';
+import 'package:getx_blockchain_practice_project_1/models/coin_data.dart';
 import 'package:getx_blockchain_practice_project_1/services/http_service.dart';
 
 class AddAssetsDialogController extends GetxController {
   RxBool loading = false.obs;
+  RxList<String> assets = <String>[].obs;
 
   @override
   void onInit() {
@@ -18,7 +21,14 @@ class AddAssetsDialogController extends GetxController {
     loading.value = true;
     HttpService httpService = Get.find<HttpService>();
     var responseData = await httpService.get("currencies");
-    print(responseData);
+    CurrenciesListAPIResponse currenciesListAPIResponse =
+        CurrenciesListAPIResponse.fromJson(responseData);
+    currenciesListAPIResponse.data?.forEach((coin) {
+      assets.add(
+        coin.name!,
+      );
+    });
+    print(assets);
     loading.value = false;
   }
 }
