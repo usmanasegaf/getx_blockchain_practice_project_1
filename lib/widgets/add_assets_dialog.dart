@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_blockchain_practice_project_1/models/api_response.dart';
-import 'package:getx_blockchain_practice_project_1/models/coin_data.dart';
 import 'package:getx_blockchain_practice_project_1/services/http_service.dart';
 
 class AddAssetsDialogController extends GetxController {
   RxBool loading = false.obs;
   RxList<String> assets = <String>[].obs;
+  RxString selectedAssets = "".obs;
 
   @override
   void onInit() {
@@ -28,7 +28,7 @@ class AddAssetsDialogController extends GetxController {
         coin.name!,
       );
     });
-    print(assets);
+    selectedAssets.value = assets.first;
     loading.value = false;
   }
 }
